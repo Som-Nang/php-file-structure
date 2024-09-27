@@ -2,5 +2,4 @@
 
 
 <?php
-$heading = "ABOUT";
-require "view/view.about.php";
+view ("/about.view.php", ['about' => 'about']);

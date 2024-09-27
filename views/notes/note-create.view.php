@@ -1,6 +1,6 @@
-<?php require("partials/header.php") ?>
-<?php require("partials/nav.php") ?>
-<?php require("partials/banner.php") ?>
+<?php require base_path("views/partials/header.php") ?>
+<?php require base_path("views/partials/nav.php") ?>
+<?php require base_path("views/partials/banner.php") ?>
 <main>
     <div class="mx-auto flex flex-col items-start justify-center p-6">
         <form action="" method="POST">
@@ -17,4 +17,4 @@
         </form>
     </div>
 </main>
-<?php require("partials/footer.php") ?>
+<?php require base_path("views/partials/footer.php") ?>
