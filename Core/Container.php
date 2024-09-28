@@ -13,7 +13,7 @@ class Container
     /**
      * @throws \Exception
      */
-    public function resolver($key)
+    public function resolve($key)
     {
         if(!array_key_exists($key, $this->bindings)){
             throw new \Exception("No match binding found for {$key}");

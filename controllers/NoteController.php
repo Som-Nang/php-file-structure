@@ -1,12 +1,10 @@
 <?php
-namespace Controller;
 
+namespace Controller;
 use Core\App;
 use Core\Database;
-//$config = require base_path("config.php");
-//$db = new Database($config['database']);
 
-class NoteController1
+class NoteController
 {
     protected $db;
 
@@ -23,6 +21,3 @@ class NoteController1
         view ("/notes/notes.view.php", ['heading' => 'My Notes', 'notes' => $notes]);
     }
 }
-
-
-
