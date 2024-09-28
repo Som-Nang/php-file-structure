@@ -3,11 +3,10 @@
 <?php require base_path("views/partials/banner.php") ?>
 <main>
     <div class="mx-auto flex flex-col items-start justify-center p-6">
-        <form action="" method="POST">
-            <label for="body">Description</label>
-            <div class="">
-                <textarea class="bg-gray-500" name="body" id="body" cols="30" rows="10"><?= $_POST['body'] ?? '' ?></textarea>
-            </div>
+        <form class="w-full " action="" method="POST">
+            <label for="body" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your Notes</label>
+            <textarea name="body" id="body" rows="4" class="mb-4 block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Write your thoughts here..."><?= $_POST['body'] ?? '' ?></textarea>
+
             <?php if (isset($error['body'])) : ?>
                 <p class="text-red-500 text-sm"><?= $error['body'] ?></p>
             <?php endif; ?>
