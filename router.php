@@ -1,7 +1,5 @@
 <?php
-use Controller\NoteController;
 
-$NoteController = new NoteController();
 //return [
 //    '/' => 'controllers/index.php',
 //    '/about' => 'controllers/about.php',
@@ -15,7 +13,7 @@ $NoteController = new NoteController();
 $router->get('/', 'controllers/index.php');
 $router->get('/about', 'controllers/about.php');
 $router->get('/contact', 'controllers/contact.php');
-$router->get('/notes', 'controllers/NoteController.php', $NoteController->index());
+$router->get('/notes', 'controllers/notes/index.php');
 $router->get('/note/show' ,'controllers/notes/show.php');
 $router->get('/note/create' , 'controllers/notes/create.php');
 $router->delete('/note/delete' , 'controllers/notes/destroy.php');

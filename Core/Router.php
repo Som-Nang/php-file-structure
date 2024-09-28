@@ -3,7 +3,7 @@ namespace Core;
 Class Router{
     protected $routes = [];
 
-    public function add($method, $uri, $controller, $func): Router
+    public function add($method, $uri, $controller): Router
     {
 //        $this->routes[] = [
 //            'uri' => $uri,
@@ -12,7 +12,7 @@ Class Router{
 //        ];
 
 //        The same above
-        $this->routes[] = compact('method', 'uri', 'controller', 'func');
+        $this->routes[] = compact('method', 'uri', 'controller');
         return $this;
     }
     public function get($uri, $controller)
@@ -41,7 +41,7 @@ Class Router{
 
     }
 
-    public function route($uri, $method, $func)
+    public function route($uri, $method)
     {
         foreach($this->routes as  $route){
             if($route['uri'] === $uri && $route['method'] === strtoupper($method)){
