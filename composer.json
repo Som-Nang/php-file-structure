@@ -1,0 +1,26 @@
+{
+    "name": "somnang/demo",
+    "authors": [
+        {
+            "name": "Som-Nang",
+            "email": "somnangmega13@gmail.com"
+        }
+    ],
+    "require": {
+        "illuminate/collections": "^11.26"
+    },
+    "autoload":{
+        "psr-4": {
+            "Core\\": "Core/",
+            "Http\\": "Http/"
+        }
+    },
+    "require-dev": {
+        "pestphp/pest": "^3.2"
+    },
+    "config": {
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
+    }
+}
