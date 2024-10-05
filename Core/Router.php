@@ -60,19 +60,55 @@ Class Router{
     /**
      * @throws \Exception
      */
+//    public function route($uri, $method)
+//    {
+//        foreach($this->routes as  $route){
+//            if($route['uri'] === $uri && $route['method'] === strtoupper($method)){
+//
+//                Middleware::resolve($route['middleware']);
+//
+//
+//                return require base_path('/Http/Controllers/'.$route['controller']);
+//            }
+//        }
+//
+//        $this->abort();
+//    }
+
     public function route($uri, $method)
     {
-        foreach($this->routes as  $route){
-            if($route['uri'] === $uri && $route['method'] === strtoupper($method)){
+        foreach ($this->routes as $route) {
+            if ($route['uri'] === $uri && $route['method'] === strtoupper($method)) {
 
-                Middleware::resolve($route['middleware']);
+                // Middleware handling if needed
+                if (isset($route['middleware'])) {
+                    Middleware::resolve($route['middleware']);
+                }
 
+                if (!isset($route['controller']) || strpos($route['controller'], '@') === false) {
+                    $this->abort(500); // Internal server error due to malformed route definition
+                }
+                // Break down controller and method
+                list($controller, $action) = explode('@', $route['controller']);
 
-                return require base_path('/Http/Controllers/'.$route['controller']);
+                // Ensure the controller class exists
+                $controllerClass = 'Http\Controllers\\' . $controller;
+                if (!class_exists($controllerClass)) {
+                    $this->abort(404); // Not found
+                }
+                // Instantiate the controller
+                $controllerInstance = new $controllerClass();
+                // Ensure the method exists on the controller
+                if (!method_exists($controllerInstance, $action)) {
+                    $this->abort(404); // Method not found
+                }
+
+                // Call the action method
+                return call_user_func_array([$controllerInstance, $action], []);
             }
         }
 
-        $this->abort();
+        $this->abort(); // Default abort if no route matches
     }
 
     public function previousUrl(){

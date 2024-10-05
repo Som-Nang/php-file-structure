@@ -12,7 +12,7 @@
     "autoload":{
         "psr-4": {
             "Core\\": "Core/",
-            "Http\\": "Http/"
+            "Http\\": "Http/",
         }
     },
     "require-dev": {

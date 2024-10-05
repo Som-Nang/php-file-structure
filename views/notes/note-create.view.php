@@ -19,26 +19,19 @@
 </main>
 <?php require base_path("views/partials/main-script-section.php") ?>
     <script>
-
-
-
-    $("#submit").click(function(){
-        let body = $("#body").val();
-        console.log(body);
-        $.ajax({
-            type: 'POST',
-            url: '<?= '/note/store' ?>',
-            data:{
-                body: body,
-            },
-            success: function(result){
-                console.log(result.status)
-            }
+        $("#submit").click(function(){
+            let body = $("#body").val();
+            console.log(body);
+            $.ajax({
+                type: 'POST',
+                url: '<?= '/note/store' ?>',
+                data:{
+                    body: body,
+                },
+                success: function(result){
+                    console.log(result.status)
+                }
+            });
         });
-
-    });
-
-
     </script>
-
 <?php require base_path("views/partials/footer.php") ?>

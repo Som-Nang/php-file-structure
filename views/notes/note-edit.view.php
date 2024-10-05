@@ -6,7 +6,7 @@
         <div class="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
             <div class="md:grid md:grid-cols-3 md:gap-6">
                 <div class="mt-5 md:col-span-2 md:mt-0">
-                    <form method="POST" action="/notes">
+                    <form method="POST" action="/note">
                         <input type="hidden" name="_method" value="PATCH">
                         <input type="hidden" name="id" value="<?= $note['id'] ?>">
 

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Sep 07, 2024 at 05:54 AM
+-- Generation Time: Oct 05, 2024 at 03:32 AM
 -- Server version: 8.0.39-0ubuntu0.24.04.1
 -- PHP Version: 8.3.6
 
@@ -28,9 +28,9 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `notes` (
-  `id` int NOT NULL,
-  `body` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
-  `user_id` int NOT NULL
+                         `id` int NOT NULL,
+                         `body` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+                         `user_id` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
@@ -38,10 +38,9 @@ CREATE TABLE `notes` (
 --
 
 INSERT INTO `notes` (`id`, `body`, `user_id`) VALUES
-(1, 'The best', 1),
-(3, 'the tree', 1),
-(4, 'the car', 1),
-(5, 'More tool for next genZ', 2);
+                                                  (9, 'Hi there!', 15),
+                                                  (10, 'Hi there 222!dd', 15),
+                                                  (11, 'fgfd', 15);
 
 -- --------------------------------------------------------
 
@@ -50,18 +49,18 @@ INSERT INTO `notes` (`id`, `body`, `user_id`) VALUES
 --
 
 CREATE TABLE `user` (
-  `id` int NOT NULL,
-  `name` varchar(255) NOT NULL,
-  `email` varchar(250) NOT NULL
+                        `id` int NOT NULL,
+                        `name` varchar(255) NOT NULL,
+                        `email` varchar(250) NOT NULL,
+                        `password` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`id`, `name`, `email`) VALUES
-(1, 'Somnang', 'somang@gmail.com'),
-(2, 'Sin', 'sin@gmail.com');
+INSERT INTO `user` (`id`, `name`, `email`, `password`) VALUES
+    (15, 'SOMNANG DIN', 'somnangmega13@gmail.com', '$2y$10$IO6vjLsmTzkBmUTJ7FW6CeOogy60YPIbQWw1gWVhHx.vXZqdR6qQC');
 
 --
 -- Indexes for dumped tables
@@ -71,14 +70,14 @@ INSERT INTO `user` (`id`, `name`, `email`) VALUES
 -- Indexes for table `notes`
 --
 ALTER TABLE `notes`
-  ADD PRIMARY KEY (`id`),
+    ADD PRIMARY KEY (`id`),
   ADD KEY `userId` (`user_id`);
 
 --
 -- Indexes for table `user`
 --
 ALTER TABLE `user`
-  ADD PRIMARY KEY (`id`),
+    ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `email` (`email`);
 
 --
@@ -89,13 +88,13 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `notes`
 --
 ALTER TABLE `notes`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+    MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+    MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- Constraints for dumped tables
@@ -105,7 +104,7 @@ ALTER TABLE `user`
 -- Constraints for table `notes`
 --
 ALTER TABLE `notes`
-  ADD CONSTRAINT `userId` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+    ADD CONSTRAINT `userId` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

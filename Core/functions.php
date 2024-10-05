@@ -39,7 +39,7 @@ function base_path($path): string
     return BASE_PATH . $path;
 }
 
-function view($path, $attribute = [])
+function view($path, $attribute = []):void
 {
     extract($attribute);
     require base_path('views/'. $path);
