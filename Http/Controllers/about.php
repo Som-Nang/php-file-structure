@@ -1,5 +1,2 @@
-
-
-
 <?php
-view ("/about.view.php", ['about' => 'about']);
+view ("/about.view.php", ['heading' => 'About']);

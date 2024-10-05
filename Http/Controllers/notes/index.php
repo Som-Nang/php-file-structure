@@ -6,8 +6,7 @@ use Core\Database;
 //$db = new Database($config['database']);
 
 $db = App::resolve(Database::class);
-
-$id = 1;
+$id = $_SESSION['user']['userID'];
 $query = "SELECT * FROM notes WHERE user_id = :id";
 $notes = $db->query($query, [':id' => $id])->get();
 
