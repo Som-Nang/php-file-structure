@@ -14,6 +14,7 @@ $router->delete('/note', 'NoteController@destroy');
 
 $router->get('/register', 'RegisterController@index')->only('guest');
 $router->post('/register', 'RegisterController@store')->only('guest');
+$router->get('/forget-password', 'RegisterController@forgetPassword')->only('guest');
 
 $router->get('/login', 'SessionController@create')->only('guest');
 $router->post('/session', 'SessionController@store')->only('guest');

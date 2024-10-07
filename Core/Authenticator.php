@@ -1,26 +1,52 @@
 <?php
-
 namespace Core;
 
+use Core\Database;
 class Authenticator
 {
+
+    protected $db;
+    protected $auth;
+
+    protected string $errors = '';
+    public function __construct()
+    {
+        $this->db = App::resolve(Database::class);
+
+        $db = \Delight\Db\PdoDatabase::fromPdo($this->db->getPdo());
+        $this->auth = new \Delight\Auth\Auth($db);
+    }
+
+
     public function attempt($email, $password){
-        $user = App::resolve(Database::class)->query('select * from user where email = :email', [
-            'email' => $email
-        ])->find();
+        try {
+            $this->auth->login($email, $password);
 
-        if($user){
-            if (password_verify($password, $user['password'])){
-                $this->login([
-                    'email' => $email,
-                    'user_name' => $user['name'],
-                    'userID' => $user['id']
-                ]);
+            $user = App::resolve(Database::class)->query('select * from users where email = :email', [
+                'email' => $email
+            ])->find();
 
-                return true;
-            }
+            $this->login([
+                'email' => $email,
+                'user_name' => $user['username'],
+                'userID' => $user['id']
+            ]);
+
+            return true;
+
         }
-
+        catch (\Delight\Auth\InvalidEmailException $e) {
+            $this->errors = 'Wrong email or password';
+        }
+        catch (\Delight\Auth\InvalidPasswordException $e) {
+            $this->errors = 'Wrong email or password';
+        }
+        catch (\Delight\Auth\EmailNotVerifiedException $e) {
+            $this->errors = 'Email not verified';
+        }
+        catch (\Delight\Auth\TooManyRequestsException $e) {
+            $this->errors = 'Too many requests';
+        }
         return false;
     }
     public function login($user){
@@ -35,5 +61,10 @@ class Authenticator
 
     public function logout(){
         Session::destroy();
+    }
+
+    public function errors(): string
+    {
+        return $this->errors;
     }
 }

@@ -4,7 +4,7 @@
         <div class="flex min-h-full items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
             <div class="w-full max-w-md space-y-8">
                 <div>
-                    <img class="mx-auto h-12 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
+                    <img class="mx-auto h-12 w-auto" src="https://play-lh.googleusercontent.com/DTzWtkxfnKwFO3ruybY1SKjJQnLYeuK3KmQmwV5OQ3dULr5iXxeEtzBLceultrKTIUTr"
                          alt="Your Company">
                     <h2 class="mt-6 text-center text-3xl font-bold tracking-tight text-gray-900">Register for a new
                         account</h2>
@@ -13,7 +13,7 @@
                     <div class="space-y-4 rounded-md shadow-sm">
                         <div>
                             <label for="name" class="sr-only">Full Name</label>
-                            <input id="name" name="name" autocomplete="email" required
+                            <input id="name" name="username" required
                                    class="relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
                                    placeholder="Full Name">
                         </div>
@@ -37,10 +37,13 @@
                         >
                             Register
                         </button>
+                        <div class="w-full flex items-center justify-end ">
+                            <a href="/forget-password" class="text-gray-800 my-2 text-secondary hover:text-blue-800">Forget Password?</a>
+                        </div>
                     </div>
                     <ul>
-                        <?php if (isset($errors['name'])) : ?>
-                            <li class="text-red-500 text-xs mt-2"><?= $errors['name'] ?></li>
+                        <?php if (isset($errors['username'])) : ?>
+                            <li class="text-red-500 text-xs mt-2"><?= $errors['username'] ?></li>
                         <?php endif; ?>
                         <?php if (isset($errors['email'])) : ?>
                             <li class="text-red-500 text-xs mt-2"><?= $errors['email'] ?></li>

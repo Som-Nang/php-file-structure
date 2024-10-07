@@ -16,21 +16,22 @@ class SessionController
 
     public function store()
     {
+        $Authenticator = new Authenticator();
+
         $form = LoginForm::validate($attributes = [
             'email' => $_POST['email'],
             'password'=> $_POST['password'],
         ]);
 
-        $signIn = (new Authenticator)->attempt(
+        $signIn = $Authenticator->attempt(
             $attributes['email'], $attributes['password']
         );
+
         if(!$signIn){
-
-            $form->error('email', 'No matching email address found! or password')->throw();
-
+            $form->error('email',  $Authenticator->errors())->throw();
         }
-        redirect('/');
 
+        redirect('/');
     }
 
     public function destroy()

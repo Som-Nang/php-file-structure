@@ -6,7 +6,7 @@ class Database
 {
     public $connection;
     public $stm;
-    public function __construct($config, $password = 'root', $user = 'root')
+    public function __construct($config, $user = 'root', $password = 'root')
     {
         //        $dsn = "mysql:host=localhost;port=3306;password=root;user=root;dbname=demo;charset=utf8mb4";
         $dsn = 'mysql:' . http_build_query($config, '', ';');
@@ -37,5 +37,10 @@ class Database
             abort();
         }
         return $result;
+    }
+
+    public function getPdo()
+    {
+        return $this->connection;
     }
 }
