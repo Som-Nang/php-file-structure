@@ -78,6 +78,7 @@
       <path value="$PROJECT_DIR$/vendor/delight-im/cookie" />
       <path value="$PROJECT_DIR$/vendor/delight-im/db" />
       <path value="$PROJECT_DIR$/vendor/delight-im/base64" />
+      <path value="$PROJECT_DIR$/vendor/phpmailer/phpmailer" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.4">

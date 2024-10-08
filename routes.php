@@ -15,6 +15,11 @@ $router->delete('/note', 'NoteController@destroy');
 $router->get('/register', 'RegisterController@index')->only('guest');
 $router->post('/register', 'RegisterController@store')->only('guest');
 $router->get('/forget-password', 'RegisterController@forgetPassword')->only('guest');
+$router->get('/confirmation', 'RegisterController@verifyPassword')->only('guest');
+$router->post('/sendEmail', 'RegisterController@sendEmailForgetPass')->only('guest');
+$router->get('/reset-password', 'RegisterController@resetPassword')->only('guest');
+$router->post('/updatePassword', 'RegisterController@updatePassword')->only('guest');
+
 
 $router->get('/login', 'SessionController@create')->only('guest');
 $router->post('/session', 'SessionController@store')->only('guest');
