@@ -19,6 +19,10 @@ $router->get('/confirmation', 'RegisterController@verifyPassword')->only('guest'
 $router->post('/sendEmail', 'RegisterController@sendEmailForgetPass')->only('guest');
 $router->get('/reset-password', 'RegisterController@resetPassword')->only('guest');
 $router->post('/updatePassword', 'RegisterController@updatePassword')->only('guest');
+$router->get('/verify-email', 'RegisterController@verifiEmail')->only('guest');
+
+//not use
+$router->get('/otp-verification', 'RegisterController@optVerification')->only('guest');
 
 
 $router->get('/login', 'SessionController@create')->only('guest');

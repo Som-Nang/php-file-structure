@@ -42,6 +42,9 @@
                         </div>
                     </div>
                     <ul>
+                        <?php if (isset($errors['error'])) : ?>
+                            <li class="text-red-500 text-xs mt-2"><?= $errors['error'] ?></li>
+                        <?php endif; ?>
                         <?php if (isset($errors['username'])) : ?>
                             <li class="text-red-500 text-xs mt-2"><?= $errors['username'] ?></li>
                         <?php endif; ?>

@@ -10,6 +10,12 @@
                 </div>
                 <form class="mt-8 space-y-6" action="/updatePassword" method="POST">
                     <div class="space-y-4 rounded-md shadow-sm">
+                        <label class="hidden">
+                            <input name="selector" autocomplete="" value='<?= $selector ?? '' ?>' />
+                        </label>
+                        <label class="hidden">
+                            <input name="token" autocomplete="" value='<?= $token ?? '' ?>' />
+                        </label>
                         <div>
                             <label for="password" class="sr-only">Password</label>
                             <input id="password" name="password" type="password" autocomplete="" required
