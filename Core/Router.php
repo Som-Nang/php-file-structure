@@ -47,13 +47,11 @@ Class Router{
     public function put($uri, $controller)
     {
         return $this->add('PUT', $uri, $controller);
-
     }
 
     public function only($key)
     {
       $this->routes[array_key_last($this->routes)]['middleware'] = $key;
-
        return $this;
     }
 
