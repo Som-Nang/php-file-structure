@@ -1,8 +1,15 @@
 <?php
+if (auth()->hasRole(\Delight\Auth\Role::ADMIN)) {
+    $router->get('/user-management', 'UserManagement@index');
+    $router->post('/user-management/store', 'UserManagement@store');
+}
+
+
+
+
 $router->get('/', 'HomeController@index');
 $router->get('/about', 'HomeController@about');
 $router->get('/contact', 'HomeController@contact');
-
 $router->get('/notes', 'NoteController@index')->only('auth');
 $router->get('/note/show', 'NoteController@show');
 $router->get('/note/create', 'NoteController@create');

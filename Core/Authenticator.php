@@ -1,7 +1,9 @@
 <?php
+
 namespace Core;
 
 use Core\Database;
+
 class Authenticator
 {
 
@@ -14,15 +16,16 @@ class Authenticator
         $this->db = App::resolve(Database::class);
 
         $db = \Delight\Db\PdoDatabase::fromPdo($this->db->getPdo());
-        $this->auth = new \Delight\Auth\Auth($db);
+        $this->auth = new \Delight\Auth\Auth($db, NULL, 'admin_');
     }
 
 
-    public function attempt($email, $password){
+    public function attempt($email, $password)
+    {
         try {
             $this->auth->login($email, $password);
 
-            $user = App::resolve(Database::class)->query('select * from users where email = :email', [
+            $user = App::resolve(Database::class)->query('select * from admin_users where email = :email', [
                 'email' => $email
             ])->find();
 
@@ -33,25 +36,21 @@ class Authenticator
             ]);
 
             return true;
-
-        }
-        catch (\Delight\Auth\InvalidEmailException $e) {
+        } catch (\Delight\Auth\InvalidEmailException $e) {
             $this->errors = 'Wrong email or password';
-        }
-        catch (\Delight\Auth\InvalidPasswordException $e) {
+        } catch (\Delight\Auth\InvalidPasswordException $e) {
             $this->errors = 'Wrong email or password';
-        }
-        catch (\Delight\Auth\EmailNotVerifiedException $e) {
+        } catch (\Delight\Auth\EmailNotVerifiedException $e) {
             $this->errors = 'Email not verified';
-        }
-        catch (\Delight\Auth\TooManyRequestsException $e) {
+        } catch (\Delight\Auth\TooManyRequestsException $e) {
             $this->errors = 'Too many requests';
         }
         return false;
     }
-    public function login($user){
+    public function login($user)
+    {
         $_SESSION['user'] = [
-            'email' =>$user['email'],
+            'email' => $user['email'],
             'user_name' => $user['user_name'],
             'userID' => $user['userID']
         ];
@@ -59,7 +58,8 @@ class Authenticator
         session_regenerate_id();
     }
 
-    public function logout(){
+    public function logout()
+    {
         Session::destroy();
     }
 

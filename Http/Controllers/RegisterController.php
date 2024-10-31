@@ -26,24 +26,27 @@ class RegisterController
 
         $this->db = App::resolve(Database::class);
         $db = \Delight\Db\PdoDatabase::fromPdo($this->db->getPdo());
-        $this->auth = new \Delight\Auth\Auth($db);
-
+        $this->auth = new \Delight\Auth\Auth($db, NULL, 'admin');
     }
 
-    public function selector(){
+    public function selector()
+    {
         return $this->selector = $_POST['selector'];
     }
 
-    public function token(){
+    public function token()
+    {
         return $this->token = $_POST['token'];
     }
 
-    public function index(){
+    public function index()
+    {
         view("/register/create.view.php", [
             'heading' => 'Home',
         ]);
     }
-    public function store(){
+    public function store()
+    {
         $errors = [];
         try {
             //delete anonymous nonymous callback function to get verify == 1 to database.
@@ -51,7 +54,7 @@ class RegisterController
                 $url = 'http://demo.test/verify-email?selector=' . \urlencode($selector) . '&token=' . \urlencode($token);
                 $body = MailSender::verifyMailHtml($_POST['username'], '<p>
                         Please click below link to verify your password</p> </br> 
-                        <a href='.$url.'> ->  '. $url .'</a>
+                        <a href=' . $url . '> ->  ' . $url . '</a>
                         ');
                 MailSender::sentMail($_POST['email'], 'Test', $body);
             });
@@ -60,30 +63,27 @@ class RegisterController
                 'heading' => 'Verify',
                 'content' => 'Please check your email to verify',
             ]);
-        }
-        catch (\Delight\Auth\InvalidEmailException $e) {
+        } catch (\Delight\Auth\InvalidEmailException $e) {
             $errors['email'] = 'Please provide a valid email address.';
-        }
-        catch (\Delight\Auth\InvalidPasswordException $e) {
+        } catch (\Delight\Auth\InvalidPasswordException $e) {
             $errors['password'] = 'Please provide a password';
-        }
-        catch (\Delight\Auth\UserAlreadyExistsException $e) {
+        } catch (\Delight\Auth\UserAlreadyExistsException $e) {
             $errors['email'] = 'Email is exited';
-        }
-        catch (\Delight\Auth\TooManyRequestsException $e) {
+        } catch (\Delight\Auth\TooManyRequestsException $e) {
             $errors['email'] = 'Too many requests. Please try again later.';
         } catch (AuthError $e) {
             $errors['email'] = 'An unexpected error occurred. Please try again later.';
         }
 
         if (!empty($errors)) {
-             view('register/create.view.php', [
+            view('register/create.view.php', [
                 'errors' => $errors
             ]);
         }
     }
 
-    public function verifiEmail(){
+    public function verifiEmail()
+    {
 
         $errors = [];
         try {
@@ -97,17 +97,13 @@ class RegisterController
             ]);
 
             redirect('/');
-        }
-        catch (\Delight\Auth\InvalidSelectorTokenPairException $e) {
+        } catch (\Delight\Auth\InvalidSelectorTokenPairException $e) {
             $errors['error'] = 'Invalid token';
-        }
-        catch (\Delight\Auth\TokenExpiredException $e) {
+        } catch (\Delight\Auth\TokenExpiredException $e) {
             $errors['error'] = 'Token expired';
-        }
-        catch (\Delight\Auth\UserAlreadyExistsException $e) {
+        } catch (\Delight\Auth\UserAlreadyExistsException $e) {
             $errors['error'] = 'Email address already exists';
-        }
-        catch (\Delight\Auth\TooManyRequestsException $e) {
+        } catch (\Delight\Auth\TooManyRequestsException $e) {
             $errors['error'] = 'Too many requests';
         } catch (AuthError $e) {
             $errors['error'] = 'An unexpected error occurred. Please try again later.';
@@ -118,22 +114,23 @@ class RegisterController
                 'errors' => $errors
             ]);
         }
-
     }
-    public function forgetPassword(){
+    public function forgetPassword()
+    {
         view("register/forgetPassword.view.php", [
             'heading' => 'Forget Password',
         ]);
     }
 
-    public function sendEmailForgetPass(){
+    public function sendEmailForgetPass()
+    {
         $errors = [];
         try {
             $this->auth->forgotPassword($_POST['email'], function ($selector, $token) {
                 $url = 'http://demo.test/reset-password?selector=' . \urlencode($selector) . '&token=' . \urlencode($token);
                 $body = MailSender::verifyMailHtml($_POST['email'], '<p>
                         Please click below link to reset your password</p> </br>
-                        <a href='.$url.'> ->  '. $url .'</a>
+                        <a href=' . $url . '> ->  ' . $url . '</a>
                         ');
                 MailSender::sentMail($_POST['email'], 'Reset Password', $body);
             });
@@ -141,14 +138,11 @@ class RegisterController
             view("mail-confirmation.view.php", [
                 'content' => 'Please check your email to reset password',
             ]);
-        }
-        catch (\Delight\Auth\InvalidEmailException $e) {
+        } catch (\Delight\Auth\InvalidEmailException $e) {
             $errors['email'] = 'Please provide a valid email address.';
-        }
-        catch (\Delight\Auth\EmailNotVerifiedException|\Delight\Auth\TooManyRequestsException $e) {
+        } catch (\Delight\Auth\EmailNotVerifiedException | \Delight\Auth\TooManyRequestsException $e) {
             $errors['email'] = 'Too many requests. Please try again later.';
-        }
-        catch (\Delight\Auth\ResetDisabledException $e) {
+        } catch (\Delight\Auth\ResetDisabledException $e) {
             $errors['email'] = 'Email not verify';
         } catch (AuthError $e) {
             $errors['email'] = 'An unexpected error occurred. Please try again later.';
@@ -158,10 +152,10 @@ class RegisterController
                 'errors' => $errors
             ]);
         }
-
     }
 
-    public function resetPassword(){
+    public function resetPassword()
+    {
         $errors = [];
         try {
             $this->auth->canResetPasswordOrThrow($_GET['selector'], $_GET['token']);
@@ -170,17 +164,13 @@ class RegisterController
                 'selector' => $_GET['selector'],
                 'token' => $_GET['token'],
             ]);
-        }
-        catch (\Delight\Auth\InvalidSelectorTokenPairException $e) {
+        } catch (\Delight\Auth\InvalidSelectorTokenPairException $e) {
             $errors['error'] = 'Invalid token';
-        }
-        catch (\Delight\Auth\TokenExpiredException $e) {
+        } catch (\Delight\Auth\TokenExpiredException $e) {
             $errors['error'] = 'Token expired';
-        }
-        catch (\Delight\Auth\ResetDisabledException $e) {
+        } catch (\Delight\Auth\ResetDisabledException $e) {
             $errors['error'] = 'Password reset is disabled';
-        }
-        catch (\Delight\Auth\TooManyRequestsException $e) {
+        } catch (\Delight\Auth\TooManyRequestsException $e) {
             $errors['error'] = 'Too many requests';
         } catch (AuthError $e) {
             $errors['error'] = 'An unexpected error occurred. Please try again later.';
@@ -193,57 +183,50 @@ class RegisterController
         }
     }
 
-    public function updatePassword(){
+    public function updatePassword()
+    {
         $Authenticator = new Authenticator();
-       $confirmPassword = $_POST['confirm-password'];
-       $password = $_POST['password'];
-       $errors = ['password not match'];
-       if($confirmPassword === $password)
-       {
-           $errors = [];
-           try {
-               $this->auth->resetPasswordAndSignIn($this->selector(), $this->token(), $_POST['password']);
+        $confirmPassword = $_POST['confirm-password'];
+        $password = $_POST['password'];
+        $errors = ['password not match'];
+        if ($confirmPassword === $password) {
+            $errors = [];
+            try {
+                $this->auth->resetPasswordAndSignIn($this->selector(), $this->token(), $_POST['password']);
 
-               // Assign Session
-               $Authenticator->login([
-                   'email' =>  $this->auth->getEmail(),
-                   'user_name' =>  $this->auth->getUsername(),
-                   'userID' =>  $this->auth->getUserId()
-               ]);
+                // Assign Session
+                $Authenticator->login([
+                    'email' =>  $this->auth->getEmail(),
+                    'user_name' =>  $this->auth->getUsername(),
+                    'userID' =>  $this->auth->getUserId()
+                ]);
 
-               redirect('/');
-           }
-           catch (\Delight\Auth\InvalidSelectorTokenPairException $e) {
-               $errors['error'] = 'Invalid token';
-           }
-           catch (\Delight\Auth\TokenExpiredException $e) {
-               $errors['error'] = 'Token expired';
-           }
-           catch (\Delight\Auth\ResetDisabledException $e) {
-               $errors['error'] = 'Password reset is disabled';
-           }
-           catch (\Delight\Auth\InvalidPasswordException $e) {
-               $errors['error'] = 'Invalid password';
-           }
-           catch (\Delight\Auth\TooManyRequestsException $e) {
-               $errors['error'] = 'Too many requests';
-           } catch (AuthError $e) {
-               $errors['error'] = 'An unexpected error occurred. Please try again later.';
-           }
-
-       }
+                redirect('/');
+            } catch (\Delight\Auth\InvalidSelectorTokenPairException $e) {
+                $errors['error'] = 'Invalid token';
+            } catch (\Delight\Auth\TokenExpiredException $e) {
+                $errors['error'] = 'Token expired';
+            } catch (\Delight\Auth\ResetDisabledException $e) {
+                $errors['error'] = 'Password reset is disabled';
+            } catch (\Delight\Auth\InvalidPasswordException $e) {
+                $errors['error'] = 'Invalid password';
+            } catch (\Delight\Auth\TooManyRequestsException $e) {
+                $errors['error'] = 'Too many requests';
+            } catch (AuthError $e) {
+                $errors['error'] = 'An unexpected error occurred. Please try again later.';
+            }
+        }
         if (!empty($errors)) {
-            header('location: /reset-password?selector='. $this->selector(). '&token='. $this->token());
+            header('location: /reset-password?selector=' . $this->selector() . '&token=' . $this->token());
             exit();
         }
-
     }
 
-    public function verifyPassword(){
+    public function verifyPassword()
+    {
         view("mail-confirmation.view.php", [
             'heading' => 'Verify',
             'content' => 'Please check your email to reset password',
         ]);
     }
-
 }
