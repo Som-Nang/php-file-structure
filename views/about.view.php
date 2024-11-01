@@ -1,19 +1,12 @@
-<?php require ("partials/header.php")?>
-<?php require ("partials/nav.php")?>
-<?php require ("partials/banner.php")?>
+<?php require("partials/header.php") ?>
+<?php require("partials/sidebar.php") ?>
 
-<main>
-    <div class="flex items-center justify-center flex-col p-8">
-        <p class="text-xl p-4">Welcome to <span class="text-green-500">About page</span> !!</p>
 
-        <div>
-            <?php
-            echo '<pre>';
-                var_dump($_SERVER);
-            echo '</pre>';
-                ?>
+<div class="p-4 sm:ml-64">
 
-        </div>
+    <div class="p-2 mt-14">
+        <?php require("partials/banner.php") ?>
     </div>
-</main>
-<?php require ("partials/footer.php")?>
+</div>
+<?php require base_path("views/partials/main-script-section.php") ?>
+<?php require("partials/footer.php") ?>

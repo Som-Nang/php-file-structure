@@ -35,6 +35,36 @@ function roles()
     return $roles;
 }
 
+function getBreadcrumbs()
+{
+    // Get the full URL path
+    $urlPath = $_SERVER['REQUEST_URI'];
+
+    // Split the URL path into segments, removing empty parts
+    $segments = array_filter(explode('/', $urlPath));
+
+    // Initialize the base URL (protocol, host)
+    $baseUrl = ($_SERVER['HTTPS'] ?? 'off') === 'on' ? 'https://' : 'http://';
+    $baseUrl .= $_SERVER['HTTP_HOST'];
+
+    $breadcrumbs = [];
+    $path = '';
+
+    // Loop through each segment to build the breadcrumb path
+    foreach ($segments as $segment) {
+        // Accumulate path up to this segment
+        $path .= '/' . $segment;
+
+        // Create a link for this segment
+        $breadcrumbs[] = [
+            'name' => ucfirst($segment), // Capitalize the segment
+            'url' => $baseUrl . $path,
+        ];
+    }
+
+    return $breadcrumbs;
+}
+
 function urlIs($value): bool
 {
     if ((strpos($_SERVER['REQUEST_URI'], $value, 0) !== false) && (strlen($value) > 0)) {
