@@ -2,6 +2,9 @@
 if (auth()->hasRole(\Delight\Auth\Role::ADMIN)) {
     $router->get('/user-management', 'UserManagement@index');
     $router->post('/user-management/store', 'UserManagement@store');
+    $router->get('/user-management/edit', 'UserManagement@edit');
+    $router->post('/user-management/update', 'UserManagement@update');
+    $router->post('/user-management/destroy', 'UserManagement@destroy');
 }
 
 

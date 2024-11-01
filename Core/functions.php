@@ -20,6 +20,20 @@ function dd($value)
 
     die();
 }
+function roles()
+{
+    $roles = [
+        \Delight\Auth\Role::ADMIN,
+        \Delight\Auth\Role::AUTHOR,
+        \Delight\Auth\Role::CONTRIBUTOR,
+        \Delight\Auth\Role::DEVELOPER,
+        \Delight\Auth\Role::MANAGER,
+        \Delight\Auth\Role::MODERATOR,
+        \Delight\Auth\Role::REVIEWER,
+        \Delight\Auth\Role::SUBSCRIBER
+    ];
+    return $roles;
+}
 
 function urlIs($value): bool
 {

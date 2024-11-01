@@ -3,16 +3,12 @@
 <?php require base_path("views/partials/banner.php") ?>
 <?php
 ?>
-
-
 <main>
-
     <div class="mx-auto flex flex-col items-start justify-center p-6">
 
         <!-- Main modal -->
         <div id="large-modal" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
             <div class="relative p-4 w-full  max-w-7xl max-h-full">
-                <div class=""></div>
                 <!-- Modal content -->
                 <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
                     <!-- Modal header -->
@@ -45,37 +41,42 @@
                                 <div class="col-span-2">
                                     <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Username</label>
                                     <input type="text" name="name" id="username" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Username" required="">
+                                    <label for="name" id="error_username" class="text-red-500 text-sm hidden"></label>
                                 </div>
                                 <div class="col-span-2">
                                     <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Phone Number</label>
-                                    <input type="number" name="name" id="phone_number" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Username" required="">
+                                    <input type="number" name="name" id="phone_number" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Phone Number" required="">
                                 </div>
                                 <div class="col-span-2 sm:col-span-1">
-                                    <label for="price" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email</label>
-                                    <input type="text" name="price" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Email" required="">
+                                    <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email</label>
+                                    <input type="text" name="email" id="email" class="bg-gray-50 border border-danger-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Email" required="">
+                                    <label for="email" id="error_email" class="text-red-500 text-sm hidden"></label>
                                 </div>
                                 <div class="col-span-2 sm:col-span-1">
                                     <label for="price" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password</label>
                                     <input type="password" name="price" id="password" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Password" required="">
+                                    <label for="password" id="error_password" class="text-red-500 text-sm hidden"></label>
                                 </div>
                                 <div class="col-span-2 sm:col-span-1">
                                     <label for="role" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Role</label>
                                     <select id="role" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
-                                        <option selected="">Select category</option>
+                                        <option value="">Select category</option>
                                         <option value="EMPLOYEE">EMPLOYEE</option>
                                         <option value="MANAGER">MANAGER</option>
                                         <option value="ADMIN">ADMIN</option>
 
                                     </select>
+                                    <label for="role" id="error_role" class="text-red-500 text-sm hidden"></label>
                                 </div>
                                 <div class="col-span-2 sm:col-span-1">
                                     <label for="dpt_id" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Department</label>
                                     <select id="dpt_id" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
-                                        <option selected="">Select Department</option>
+                                        <option value="">Select Department</option>
                                         <?php foreach ($dpt as $key => $item): ?>
                                             <option value="<?= $item['ID'] ?>"><?= $item['dpt_name'] ?></option>
                                         <?php endforeach; ?>
                                     </select>
+                                    <label for="dpt_id" id="error_function" class="text-red-500 text-sm hidden"></label>
                                 </div>
                                 <div class="col-span-2">
                                     <label for="description" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Description</label>
@@ -97,8 +98,10 @@
             </div>
         </div>
 
-        <!-- component -->
+        <div id="edit-modal" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
 
+        </div>
+        <!-- component -->
         <div class="relative flex flex-col w-full h-full overflow-y-auto text-slate-700 bg-white shadow-md rounded-xl bg-clip-border">
             <div class="relative mx-4 mt-4 overflow-hidden text-slate-700 bg-white rounded-none bg-clip-border">
                 <div class="flex items-center justify-between ">
@@ -107,11 +110,7 @@
                         <p class="text-slate-500">Review each person before edit</p>
                     </div>
                     <div class="flex flex-col gap-2 shrink-0 sm:flex-row">
-                        <button
-                            class="rounded border border-slate-300 py-2.5 px-3 text-center text-xs font-semibold text-slate-600 transition-all hover:opacity-75 focus:ring focus:ring-slate-300 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
-                            type="button">
-                            View All
-                        </button>
+
                         <button
                             data-modal-target="large-modal" data-modal-toggle="large-modal"
                             class="flex select-none items-center gap-2 rounded bg-gray-800 py-2.5 px-4 text-xs font-semibold text-white shadow-md shadow-slate-900/10 transition-all hover:shadow-lg hover:shadow-slate-900/20 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
@@ -197,7 +196,8 @@
                             <tr>
                                 <td class="p-4 border-b border-slate-200">
                                     <div class="flex items-center gap-3">
-                                        <img src="<?= $value['profile_pic'] ?? 'https://media.istockphoto.com/id/1337144146/vector/default-avatar-profile-icon-vector.jpg?s=612x612&w=0&k=20&c=BIbFwuv7FxTWvh5S3vB6bkT0Qv8Vn8N5Ffseq84ClGI=' ?>"
+                                        <img src="<?php echo $value['profile_pic'] != NULL ? '/public/profile-uploaded/' . $value['profile_pic']
+                                                        : 'https://media.istockphoto.com/id/1337144146/vector/default-avatar-profile-icon-vector.jpg?s=612x612&w=0&k=20&c=BIbFwuv7FxTWvh5S3vB6bkT0Qv8Vn8N5Ffseq84ClGI=' ?>"
                                             alt="John Michael" class="relative inline-block h-9 w-9 !rounded-full object-cover object-center" />
                                         <div class="flex flex-col">
                                             <p class="text-sm font-semibold text-slate-700">
@@ -243,30 +243,30 @@
                                         <?= date("Y-m-d", $value['registered']); ?>
                                     </p>
                                 </td>
-                                <td class="p-4 border-b border-slate-200 flex">
+                                <td class="p-4 border-b border-slate-200 flex gap-2">
                                     <button
-                                        class="relative h-10 max-h-[40px] w-10 max-w-[40px] select-none rounded-lg text-center align-middle font-sans text-xs font-medium uppercase text-slate-900 transition-all hover:bg-slate-900/10 active:bg-slate-900/20 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                                        id="<?= $value['id'] ?>"
+                                        class="editBtn relative h-10 max-h-[40px] w-10 max-w-[40px] select-none rounded-lg text-center align-middle font-sans text-xs font-medium uppercase bg-gray-100 text-slate-900 transition-all hover:bg-slate-900/10 active:bg-slate-900/20 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
                                         type="button">
                                         <span class="absolute transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
-                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"
-                                                class="w-4 h-4">
-                                                <path
-                                                    d="M21.731 2.269a2.625 2.625 0 00-3.712 0l-1.157 1.157 3.712 3.712 1.157-1.157a2.625 2.625 0 000-3.712zM19.513 8.199l-3.712-3.712-12.15 12.15a5.25 5.25 0 00-1.32 2.214l-.8 2.685a.75.75 0 00.933.933l2.685-.8a5.25 5.25 0 002.214-1.32L19.513 8.2z">
-                                                </path>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" viewBox="0 0 20 20" class="text-blue-800">
+                                                <path fill="currentColor" d="M9 2a4 4 0 1 0 0 8a4 4 0 0 0 0-8m-4.991 9A2 2 0 0 0 2 13c0 1.691.833 2.966 2.135 3.797C5.417 17.614 7.145 18 9 18q.617 0 1.21-.057A5.48 5.48 0 0 1 9 14.5c0-1.33.472-2.55 1.257-3.5zm6.626 2.92a2 2 0 0 0 1.43-2.478l-.155-.557q.382-.293.821-.497l.338.358a2 2 0 0 0 2.91.001l.324-.344q.448.212.835.518l-.126.423a2 2 0 0 0 1.456 2.519l.349.082a4.7 4.7 0 0 1 .01 1.017l-.46.117a2 2 0 0 0-1.431 2.479l.156.556q-.383.294-.822.498l-.338-.358a2 2 0 0 0-2.909-.002l-.325.344a4.3 4.3 0 0 1-.835-.518l.127-.422a2 2 0 0 0-1.456-2.52l-.35-.082a4.7 4.7 0 0 1-.01-1.016zm4.865.58a1 1 0 1 0-2 0a1 1 0 0 0 2 0" />
                                             </svg>
                                         </span>
                                     </button>
 
                                     <button
-                                        class="flex select-none items-center gap-2 rounded bg-green-800 py-2.5 px-4 text-xs font-semibold text-white shadow-md shadow-slate-900/10 transition-all hover:shadow-lg hover:shadow-slate-900/20 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                                        id="<?= $value['id'] ?>"
+                                        class="deleteBtn relative h-10 max-h-[40px] w-10 max-w-[40px] select-none rounded-lg text-center align-middle font-sans text-xs font-medium uppercase bg-gray-100 text-slate-900 transition-all hover:bg-slate-900/10 active:bg-slate-900/20 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
                                         type="button">
-                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"
-                                            stroke-width="2" class="w-4 h-4">
-                                            <path
-                                                d="M6.25 6.375a4.125 4.125 0 118.25 0 4.125 4.125 0 01-8.25 0zM3.25 19.125a7.125 7.125 0 0114.25 0v.003l-.001.119a.75.75 0 01-.363.63 13.067 13.067 0 01-6.761 1.873c-2.472 0-4.786-.684-6.76-1.873a.75.75 0 01-.364-.63l-.001-.122zM19.75 7.5a.75.75 0 00-1.5 0v2.25H16a.75.75 0 000 1.5h2.25v2.25a.75.75 0 001.5 0v-2.25H22a.75.75 0 000-1.5h-2.25V7.5z">
-                                            </path>
-                                        </svg>
-                                        Role
+                                        <span class="absolute transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" viewBox="0 0 48 48" class="text-red-600">
+                                                <g fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="4">
+                                                    <path stroke-linecap="round" d="M8 11h32M18 5h12" />
+                                                    <path fill="currentColor" d="M12 17h24v23a3 3 0 0 1-3 3H15a3 3 0 0 1-3-3z" />
+                                                </g>
+                                            </svg>
+                                        </span>
                                     </button>
                                 </td>
                             </tr>
@@ -280,6 +280,7 @@
                 </p>
                 <div class="flex gap-1">
                     <button
+
                         class="rounded border border-slate-300 py-2.5 px-3 text-center text-xs font-semibold text-slate-600 transition-all hover:opacity-75 focus:ring focus:ring-slate-300 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
                         type="button">
                         Previous
@@ -295,63 +296,20 @@
     </div>
 </main>
 <?php require base_path("views/partials/main-script-section.php") ?>
+<script src="/views/UserManagement/UserManagement.js"></script>
+
 <script>
-    $("#submit").click(function() {
-        let password = $("#password").val();
-        let email = $("#email").val();
-        let username = $("#username").val();
-        let role = $("#role").val();
-        let dpt_id = $('#dpt_id').val();
-        let phone_number = $('#phone_number').val();
-        let description = $("#description").val();
-        let file = $('#file')[0].files[0];
+    let url = '<?= '/user-management/store' ?>';
+    let editUrl = '<?= '/user-management/edit' ?>';
 
-        let formData = new FormData;
+    $(".deleteBtn").click(function() {
+        let staffId = this.id;
+        let deleteUrl = '<?= '/user-management/destroy' ?>';
+        deleteData(staffId, deleteUrl)
+    })
 
-
-        formData.append("password", password);
-        formData.append("email", email);
-        formData.append("username", username);
-        formData.append("role", role);
-        formData.append("description", description);
-        formData.append("dpt_id", dpt_id);
-        formData.append("phone_number", phone_number);
-        formData.append("files", file);
-
-        $.ajax({
-            type: 'POST',
-            url: '<?= '/user-management/store' ?>',
-            data: formData,
-            contentType: false,
-            processData: false,
-            enctype: 'multipart/form-data',
-            success: function(data) {
-                if (data === 'success') {
-                    Swal.fire({
-                        title: "success",
-                        icon: 'success',
-                        showConfirmButton: false,
-                        timer: 1500,
-                        position: 'top-end',
-                        toast: true
-                    });
-
-                    // setTimeout(() => {
-                    //     location.reload();
-                    // }, 1200);
-
-                } else if (data !== 'success') {
-                    Swal.fire({
-                        title: data,
-                        icon: 'error',
-                        showConfirmButton: false,
-                        timer: 1500,
-                        position: 'top-end',
-                        toast: true
-                    });
-                }
-            }
-        });
-    });
+    userManagement();
+    editStaff();
 </script>
+
 <?php require base_path("views/partials/footer.php") ?>
