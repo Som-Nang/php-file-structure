@@ -32,7 +32,8 @@ class Authenticator
             $this->login([
                 'email' => $email,
                 'user_name' => $user['username'],
-                'userID' => $user['id']
+                'userID' => $user['id'],
+                'userProfile' => $user['profile_pic']
             ]);
 
             return true;
@@ -52,7 +53,8 @@ class Authenticator
         $_SESSION['user'] = [
             'email' => $user['email'],
             'user_name' => $user['user_name'],
-            'userID' => $user['userID']
+            'userID' => $user['userID'],
+            'userProfile' => $user['userProfile']
         ];
 
         session_regenerate_id();

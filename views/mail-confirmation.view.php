@@ -1,6 +1,4 @@
-<?php require ("partials/header.php")?>
-<?php require ("partials/nav.php")?>
-<?php require ("partials/banner.php")?>
+<?php require("partials/header.php") ?>
 <div>
     <div class="flex items-center justify-center min-h-full p-5  min-w-screen">
         <div class="max-w-xl p-8 text-center text-gray-800 bg-white shadow-xl lg:max-w-3xl rounded-3xl lg:p-12">
@@ -18,7 +16,7 @@
                     <rect x="8" y="15" width="6" height="2" rx="1" fill="#3BB54A" />
                     <defs>
                         <linearGradient id="paint0_linear" x1="16.9996" y1="10.4791" x2="47.0156" y2="10.4791"
-                                        gradientUnits="userSpaceOnUse">
+                            gradientUnits="userSpaceOnUse">
                             <stop stop-color="#009217" />
                             <stop offset="1" stop-color="#00FF29" />
                         </linearGradient>

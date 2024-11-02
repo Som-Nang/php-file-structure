@@ -1,5 +1,4 @@
-<?php require ("partials/header.php")?>
-<?php require ("partials/nav.php")?>
+<?php require("partials/header.php") ?>
 
 <main>
     <div class="flex items-center justify-center flex-col p-8">
@@ -10,4 +9,4 @@
         </div>
     </div>
 </main>
-<?php require ("partials/footer.php")?>
+<?php require("partials/footer.php") ?>

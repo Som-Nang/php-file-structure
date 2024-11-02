@@ -2,14 +2,14 @@
 <?php require base_path("views/partials/sidebar.php") ?>
 
 
-<div class="p-4 sm:ml-64">
+<div class="p-4 sm:ml-64 h-screen  bg-gray-100 dark:bg-gray-900">
     <div class="p-2 mt-14">
         <?php require base_path("views/partials/banner.php") ?>
         <main>
             <div id="large-modal" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
                 <div class="relative p-4 w-full  max-w-7xl max-h-full">
                     <!-- Modal content -->
-                    <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                    <div class="relative bg-gray-200 dark:bg-gray-800 rounded-lg shadow dark:bg-gray-700">
                         <!-- Modal header -->
                         <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
                             <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
@@ -101,18 +101,18 @@
 
             </div>
             <!-- component -->
-            <div class="relative flex flex-col w-full h-full overflow-y-auto text-slate-700 bg-white shadow-md rounded-xl bg-clip-border">
-                <div class="relative mx-4 mt-4 overflow-hidden text-slate-700 bg-white rounded-none bg-clip-border">
+            <div class="relative flex flex-col w-full h-full overflow-y-auto text-gray-700 bg-gray-50 dark:bg-gray-800 border dark:border-gray-800 border-gray-100 rounded-xl bg-clip-border">
+                <div class="relative mx-4 mt-4 overflow-hidden text-gray-700 bg-gray-50 dark:bg-gray-800 rounded-none bg-clip-border">
                     <div class="flex items-center justify-between ">
                         <div>
-                            <h3 class="text-lg font-semibold text-slate-800">Employees List</h3>
-                            <p class="text-slate-500">Review each person before edit</p>
+                            <h3 class="text-lg font-semibold text-gray-700 dark:text-blue-500">Employees List</h3>
+                            <p class="text-gray-700 dark:text-blue-400">Review each person before edit</p>
                         </div>
                         <div class="flex flex-col gap-2 shrink-0 sm:flex-row">
 
                             <button
                                 data-modal-target="large-modal" data-modal-toggle="large-modal"
-                                class="flex select-none items-center gap-2 rounded bg-gray-800 py-2.5 px-4 text-xs font-semibold text-white shadow-md shadow-slate-900/10 transition-all hover:shadow-lg hover:shadow-slate-900/20 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                                class="flex select-none items-center gap-2 rounded bg-gray-800 dark:bg-blue-600 py-2.5 px-4 text-xs font-semibold text-white shadow-md shadow-slate-900/10 transition-all hover:shadow-lg hover:shadow-slate-900/20 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
                                 type="button">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"
                                     stroke-width="2" class="w-4 h-4">
@@ -131,9 +131,9 @@
                         <thead>
                             <tr>
                                 <th
-                                    class="p-4 transition-colors cursor-pointer border-y border-slate-200 bg-slate-50 hover:bg-slate-100">
+                                    class="p-4 transition-colors cursor-pointer border-y border-gray-200 bg-gray-50 dark:bg-gray-700 dark:border-gray-800 hover:bg-slate-100">
                                     <p
-                                        class="flex items-center justify-between gap-2 font-sans text-sm font-normal leading-none text-slate-500">
+                                        class="flex items-center justify-between gap-2 font-sans text-sm font-normal leading-none text-gray-700 dark:text-blue-500">
                                         Member
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
                                             stroke="currentColor" aria-hidden="true" class="w-4 h-4">
@@ -143,9 +143,9 @@
                                     </p>
                                 </th>
                                 <th
-                                    class="p-4 transition-colors cursor-pointer border-y border-slate-200 bg-slate-50 hover:bg-slate-100">
+                                    class="p-4 transition-colors cursor-pointer border-y border-gray-200 bg-gray-50 dark:bg-gray-700 dark:border-gray-800 hover:bg-slate-100">
                                     <p
-                                        class="flex items-center justify-between gap-2 font-sans text-sm font-normal leading-none text-slate-500">
+                                        class="flex items-center justify-between gap-2 font-sans text-sm font-normal leading-none text-gray-700 dark:text-blue-500">
                                         Function
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
                                             stroke="currentColor" aria-hidden="true" class="w-4 h-4">
@@ -155,9 +155,9 @@
                                     </p>
                                 </th>
                                 <th
-                                    class="p-4 transition-colors cursor-pointer border-y border-slate-200 bg-slate-50 hover:bg-slate-100">
+                                    class="p-4 transition-colors cursor-pointer border-y border-gray-200 bg-gray-50 dark:bg-gray-700 dark:border-gray-800 hover:bg-slate-100">
                                     <p
-                                        class="flex items-center justify-between gap-2 font-sans text-sm  font-normal leading-none text-slate-500">
+                                        class="flex items-center justify-between gap-2 font-sans text-sm  font-normal leading-none text-gray-700 dark:text-blue-500">
                                         Status
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
                                             stroke="currentColor" aria-hidden="true" class="w-4 h-4">
@@ -167,9 +167,9 @@
                                     </p>
                                 </th>
                                 <th
-                                    class="p-4 transition-colors cursor-pointer border-y border-slate-200 bg-slate-50 hover:bg-slate-100">
+                                    class="p-4 transition-colors cursor-pointer border-y border-gray-200 bg-gray-50 dark:bg-gray-700 dark:border-gray-800 hover:bg-slate-100">
                                     <p
-                                        class="flex items-center justify-between gap-2 font-sans text-sm  font-normal leading-none text-slate-500">
+                                        class="flex items-center justify-between gap-2 font-sans text-sm  font-normal leading-none text-gray-700 dark:text-blue-500">
                                         Employed
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
                                             stroke="currentColor" aria-hidden="true" class="w-4 h-4">
@@ -179,9 +179,15 @@
                                     </p>
                                 </th>
                                 <th
-                                    class="p-4 transition-colors cursor-pointer border-y border-slate-200 bg-slate-50 hover:bg-slate-100">
+                                    class="p-4 transition-colors cursor-pointer border-y border-gray-200 bg-gray-50 dark:bg-gray-700 dark:border-gray-800 hover:bg-slate-100">
                                     <p
-                                        class="flex items-center justify-between gap-2 font-sans text-sm  font-normal leading-none text-slate-500">
+                                        class="flex items-center justify-between gap-2 font-sans text-sm  font-normal leading-none text-gray-700 dark:text-blue-500">
+                                        Actions
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                                            stroke="currentColor" aria-hidden="true" class="w-4 h-4">
+                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                d="M8.25 15L12 18.75 15.75 15m-7.5-6L12 5.25 15.75 9"></path>
+                                        </svg>
                                     </p>
                                 </th>
                             </tr>
@@ -193,62 +199,62 @@
                                 $isBanned = ($value['status'] === 'banned');
                             ?>
                                 <tr>
-                                    <td class="p-4 border-b border-slate-200">
+                                    <td class="p-4 border-b border-gray-200 dark:border-gray-500">
                                         <div class="flex items-center gap-3">
                                             <img src="<?php echo $value['profile_pic'] != NULL ? '/public/profile-uploaded/' . $value['profile_pic']
                                                             : 'https://media.istockphoto.com/id/1337144146/vector/default-avatar-profile-icon-vector.jpg?s=612x612&w=0&k=20&c=BIbFwuv7FxTWvh5S3vB6bkT0Qv8Vn8N5Ffseq84ClGI=' ?>"
                                                 alt="John Michael" class="relative inline-block h-9 w-9 !rounded-full object-cover object-center" />
                                             <div class="flex flex-col">
-                                                <p class="text-sm font-semibold text-slate-700">
+                                                <p class="text-sm font-semibold text-gray-700 dark:text-gray-300">
                                                     <?= $value['username'] ?>
                                                 </p>
                                                 <p
-                                                    class="text-sm text-slate-500">
+                                                    class="text-sm text-gray-700 dark:text-gray-300">
                                                     <?= $value['email'] ?>
                                                 </p>
                                             </div>
                                         </div>
                                     </td>
-                                    <td class="p-4 border-b border-slate-200">
+                                    <td class="p-4 border-b border-gray-200 dark:border-gray-500">
                                         <div class="flex flex-col">
 
                                             <?php foreach ($roles as $key => $role): ?>
-                                                <p class="text-sm font-semibold text-slate-700"> <?= $role ?> </p>
+                                                <p class="text-sm font-semibold text-gray-700 dark:text-gray-300"> <?= $role ?> </p>
                                             <?php endforeach; ?>
 
                                             <p
-                                                class="text-sm text-slate-500">
+                                                class="text-sm text-gray-700 dark:text-gray-300 dark:border-gray-500">
                                                 <?= $value['dpt_name'] ?>
                                             </p>
                                         </div>
                                     </td>
-                                    <td class="p-4 border-b border-slate-200">
+                                    <td class="p-4 border-b border-gray-200 dark:border-gray-500">
                                         <div class="w-max">
                                             <?php if ($isConfirmed && !$isBanned): ?>
                                                 <div
-                                                    class="relative grid items-center px-2 py-1 font-sans text-xs font-bold text-green-900 uppercase rounded-md select-none whitespace-nowrap bg-green-500/20">
+                                                    class="relative grid items-center px-2 py-1 font-sans text-xs font-bold dark:text-green-300 text-green-900 uppercase rounded-md select-none whitespace-nowrap bg-green-500/20">
                                                     <span class="">active</span>
                                                 </div>
                                             <?php else: ?>
                                                 <div
-                                                    class="relative grid items-center px-2 py-1 font-sans text-xs font-bold text-red-900 uppercase rounded-md select-none whitespace-nowrap bg-red-500/20">
+                                                    class="relative grid items-center px-2 py-1 font-sans text-xs font-bold dark:text-red-300 text-red-900 uppercase rounded-md select-none whitespace-nowrap bg-red-500/20">
                                                     <span class="">inactive</span>
                                                 </div>
                                             <?php endif; ?>
                                         </div>
                                     </td>
-                                    <td class="p-4 border-b border-slate-200">
-                                        <p class="text-sm text-slate-500">
+                                    <td class="p-4 border-b border-gray-200 dark:border-gray-500">
+                                        <p class="text-sm text-gray-700 dark:text-gray-300">
                                             <?= date("Y-m-d", $value['registered']); ?>
                                         </p>
                                     </td>
-                                    <td class="p-4 border-b border-slate-200 flex gap-2">
+                                    <td class="p-4 border-b border-gray-200 dark:border-gray-500">
                                         <button
                                             id="<?= $value['id'] ?>"
-                                            class="editBtn relative h-10 max-h-[40px] w-10 max-w-[40px] select-none rounded-lg text-center align-middle font-sans text-xs font-medium uppercase bg-gray-100 text-slate-900 transition-all hover:bg-slate-900/10 active:bg-slate-900/20 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                                            class="editBtn relative h-10 max-h-[40px] w-10 max-w-[40px] select-none rounded-lg text-center align-middle font-sans text-xs font-medium uppercase dark:bg-gray-900 bg-gray-100 text-gray-700 dark:text-gray-300 transition-all dark:hover:bg-gray-700 hover:bg-gray-200 active:bg-gray-900/20 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
                                             type="button">
                                             <span class="absolute transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" viewBox="0 0 20 20" class="text-blue-800">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" viewBox="0 0 20 20" class="text-blue-800 dark:text-blue-500">
                                                     <path fill="currentColor" d="M9 2a4 4 0 1 0 0 8a4 4 0 0 0 0-8m-4.991 9A2 2 0 0 0 2 13c0 1.691.833 2.966 2.135 3.797C5.417 17.614 7.145 18 9 18q.617 0 1.21-.057A5.48 5.48 0 0 1 9 14.5c0-1.33.472-2.55 1.257-3.5zm6.626 2.92a2 2 0 0 0 1.43-2.478l-.155-.557q.382-.293.821-.497l.338.358a2 2 0 0 0 2.91.001l.324-.344q.448.212.835.518l-.126.423a2 2 0 0 0 1.456 2.519l.349.082a4.7 4.7 0 0 1 .01 1.017l-.46.117a2 2 0 0 0-1.431 2.479l.156.556q-.383.294-.822.498l-.338-.358a2 2 0 0 0-2.909-.002l-.325.344a4.3 4.3 0 0 1-.835-.518l.127-.422a2 2 0 0 0-1.456-2.52l-.35-.082a4.7 4.7 0 0 1-.01-1.016zm4.865.58a1 1 0 1 0-2 0a1 1 0 0 0 2 0" />
                                                 </svg>
                                             </span>
@@ -256,10 +262,10 @@
 
                                         <button
                                             id="<?= $value['id'] ?>"
-                                            class="deleteBtn relative h-10 max-h-[40px] w-10 max-w-[40px] select-none rounded-lg text-center align-middle font-sans text-xs font-medium uppercase bg-gray-100 text-slate-900 transition-all hover:bg-slate-900/10 active:bg-slate-900/20 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                                            class="deleteBtn relative h-10 max-h-[40px] w-10 max-w-[40px] select-none rounded-lg text-center align-middle font-sans text-xs font-medium uppercase dark:bg-gray-900 bg-gray-100 text-gray-700 dark:text-gray-300 transition-all dark:hover:bg-gray-700 hover:bg-gray-200 active:bg-gray-900/20 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
                                             type="button">
                                             <span class="absolute transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" viewBox="0 0 48 48" class="text-red-600">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" viewBox="0 0 48 48" class="text-red-600 dark:text-red-500">
                                                     <g fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="4">
                                                         <path stroke-linecap="round" d="M8 11h32M18 5h12" />
                                                         <path fill="currentColor" d="M12 17h24v23a3 3 0 0 1-3 3H15a3 3 0 0 1-3-3z" />
@@ -274,18 +280,18 @@
                     </table>
                 </div>
                 <div class="flex items-center justify-between p-3">
-                    <p class="block text-sm text-slate-500">
+                    <p class="block text-sm text-gray-700 dark:text-gray-300">
                         Page 1 of 10
                     </p>
                     <div class="flex gap-1">
                         <button
 
-                            class="rounded border border-slate-300 py-2.5 px-3 text-center text-xs font-semibold text-slate-600 transition-all hover:opacity-75 focus:ring focus:ring-slate-300 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                            class="rounded border border-slate-300 py-2.5 px-3 text-center text-xs font-semibold text-gray-700 dark:text-gray-300 transition-all hover:opacity-75 focus:ring focus:ring-slate-300 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
                             type="button">
                             Previous
                         </button>
                         <button
-                            class="rounded border border-slate-300 py-2.5 px-3 text-center text-xs font-semibold text-slate-600 transition-all hover:opacity-75 focus:ring focus:ring-slate-300 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                            class="rounded border border-slate-300 py-2.5 px-3 text-center text-xs font-semibold text-gray-700 dark:text-gray-300 transition-all hover:opacity-75 focus:ring focus:ring-slate-300 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
                             type="button">
                             Next
                         </button>
@@ -306,6 +312,8 @@
         let deleteUrl = '<?= '/user-management/destroy' ?>';
         deleteData(staffId, deleteUrl)
     })
+
+
 
     userManagement();
     editStaff();

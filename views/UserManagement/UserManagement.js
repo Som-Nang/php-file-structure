@@ -68,6 +68,12 @@ const editStaff = () => {
 
           Ajax(formData, "#edit-modal");
         });
+
+        $(".resetPass").click(function () {
+          let resetStaffID = this.id;
+          let resetUrl = "/user-management/reset-user-password";
+          ajaxPostFunc(resetStaffID, resetUrl, "Reset Password", "reset");
+        });
       },
     });
   });

@@ -5,11 +5,12 @@ namespace Http\Controllers;
 use Http\Forms\LoginForm;
 use Core\Authenticator;
 use Core\Session;
+
 class SessionController
 {
     public function create()
     {
-        view('session/create.view.php',[
+        view('session/create.view.php', [
             'errors' => Session::get('errors')
         ]);
     }
@@ -20,18 +21,19 @@ class SessionController
 
         $form = LoginForm::validate($attributes = [
             'email' => $_POST['email'],
-            'password'=> $_POST['password'],
+            'password' => $_POST['password'],
         ]);
 
         $signIn = $Authenticator->attempt(
-            $attributes['email'], $attributes['password']
+            $attributes['email'],
+            $attributes['password']
         );
 
-        if(!$signIn){
+        if (!$signIn) {
             $form->error('email',  $Authenticator->errors())->throw();
         }
 
-        redirect('/');
+        redirect('/dashboard');
     }
 
     public function destroy()

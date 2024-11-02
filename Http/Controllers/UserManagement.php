@@ -229,7 +229,7 @@ class UserManagement
                     </div>
                     <form class="p-4 md:p-5">
                         <div class="flex">
-                            <div class="w-1/3 flex items-start justify-center">
+                            <div class="w-1/3 flex flex-col items-center justify-start gap-4">
                                 <div class="profile-pic">
                                     <label class="-label" for="fileEdit">
                                         <span class="glyphicon glyphicon-camera"></span>
@@ -237,6 +237,12 @@ class UserManagement
                                     </label>
                                     <input id="fileEdit" name="propic" type="file" onchange="loadFileEdit(event)" accept="image/*" />
                                     <img src="' . ($staff[0]['profile_pic'] != NULL ? '/public/profile-uploaded/' . $staff[0]['profile_pic'] : 'https://media.istockphoto.com/id/1337144146/vector/default-avatar-profile-icon-vector.jpg?s=612x612&w=0&k=20&c=BIbFwuv7FxTWvh5S3vB6bkT0Qv8Vn8N5Ffseq84ClGI=') . '" id="outputEditFile" width="200" />
+                                </div>
+                                <div class="flex items-center justify-center mt-4 w-full">
+                                    <button type="button" id="' . $staff[0]['id'] . '" class="resetPass text-white inline-flex items-center bg-red-500 hover:bg-red-700 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="me-1 -ms-1 w-5 h-5"viewBox="0 0 24 24"><path fill="currentColor" d="M13 3a9 9 0 0 0-9 9c0 .06.01.12.01.19l-1.84-1.84l-1.41 1.41L5 16l4.24-4.24l-1.41-1.41l-1.82 1.82c0-.06-.01-.11-.01-.17c0-3.86 3.14-7 7-7s7 3.14 7 7s-3.14 7-7 7c-1.9 0-3.62-.76-4.88-1.99L6.7 18.42A8.98 8.98 0 0 0 13 21a9 9 0 0 0 0-18m2 8v-1c0-1.1-.9-2-2-2s-2 .9-2 2v1c-.55 0-1 .45-1 1v3c0 .55.45 1 1 1h4c.55 0 1-.45 1-1v-3c0-.55-.45-1-1-1m-1 0h-2v-1c0-.55.45-1 1-1s1 .45 1 1z"/></svg>
+                                        Reset Password
+                                    </button>
                                 </div>
                             </div>
 
@@ -246,7 +252,7 @@ class UserManagement
                                     <input value="' . ($staff[0]['username'] ?? '') . '"type="text" name="name" id="username" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Username" required="">
                                     <label for="name" id="error_username" class="text-red-500 text-sm hidden"></label>
                                 </div>
-                                <div class="col-span-2">
+                                <div class="col-span-2 sm:col-span-1">
                                     <label for="phone" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Phone Number</label>
                                     <input value="' . ($staff[0]['phone_num'] ?? '') . '" type="number" name="phone" id="phone_number" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Phone Number" required="">
                                 </div>
@@ -255,11 +261,7 @@ class UserManagement
                                     <input value="' . ($staff[0]['email'] ?? '') . '"type="text" name="email" id="email" class="bg-gray-50 border border-danger-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Email" required="">
                                     <label for="email" id="error_email" class="text-red-500 text-sm hidden"></label>
                                 </div>
-                                <div class="col-span-2 sm:col-span-1">
-                                    <label for="price" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password</label>
-                                    <input type="password" name="password" id="password" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Password" required="">
-                                    <label for="password" id="error_password" class="text-red-500 text-sm hidden"></label>
-                                </div>
+                              
                                 <div class="col-span-2 sm:col-span-1">
                                     <label for="role" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Role</label>
                                     <select id="role" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
@@ -333,5 +335,21 @@ class UserManagement
 
             die();
         }
+    }
+
+    public function reset()
+    {
+        $message = 'success';
+        try {
+            auth()->admin()->changePasswordForUserById($_POST['reset'], 'NU@1234');
+        } catch (\Delight\Auth\UnknownIdException $e) {
+            $message = 'Unknown user';
+        } catch (\Delight\Auth\InvalidPasswordException $e) {
+            $message = 'Invalid password';
+        }
+        header('Content-Type: application/json');
+        echo json_encode($message);
+
+        die();
     }
 }
